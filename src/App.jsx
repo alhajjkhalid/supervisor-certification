@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket } from 'lucide-react';
 
 export default function KeetaCertificationDashboard() {
-  const [selectedModule, setSelectedModule] = useState(null);
-
   const modules = [
     {
       id: 1,
@@ -541,12 +539,8 @@ export default function KeetaCertificationDashboard() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {modules.map((module) => (
-              <div
-                key={module.id}
-                onClick={() => setSelectedModule(selectedModule === module.id ? null : module.id)}
-                className="cursor-pointer group"
-              >
-                <div className={`bg-gradient-to-br ${module.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}>
+              <div key={module.id}>
+                <div className={`bg-gradient-to-br ${module.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300`}>
                   <div className="flex items-start justify-between mb-4">
                     <module.icon className="w-10 h-10" />
                     <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
@@ -556,22 +550,16 @@ export default function KeetaCertificationDashboard() {
                   <h3 className="font-bold text-xl mb-2">{module.title}</h3>
                   <p className="text-white/80 text-sm mb-4">{module.topics.length} key topics</p>
                   
-                  {selectedModule === module.id && (
-                    <div className="mt-4 pt-4 border-t border-white/20">
-                      <p className="text-xs font-semibold mb-2 text-white/90">Topics Covered:</p>
-                      <ul className="space-y-1">
-                        {module.topics.map((topic, idx) => (
-                          <li key={idx} className="text-sm text-white/90 flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                            <span>{topic}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  <div className="mt-4 text-xs text-white/70">
-                    Click to {selectedModule === module.id ? 'collapse' : 'expand'}
+                  <div className="pt-4 border-t border-white/20">
+                    <p className="text-xs font-semibold mb-2 text-white/90">Topics Covered:</p>
+                    <ul className="space-y-1">
+                      {module.topics.map((topic, idx) => (
+                        <li key={idx} className="text-sm text-white/90 flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                          <span>{topic}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -595,6 +583,235 @@ export default function KeetaCertificationDashboard() {
                 <p className="text-sm text-slate-600">{benefit.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Future Enhancements & Expansion Opportunities */}
+        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-8 mb-8 border-2 border-indigo-200">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="bg-indigo-600 p-2 rounded-lg">
+              <Rocket className="w-6 h-6 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-slate-800">Future Enhancements & Expansion Opportunities</h2>
+          </div>
+          <p className="text-slate-600 mb-6 ml-14">Strategic initiatives to maximize program impact and engagement once the core certification is established</p>
+          
+          <div className="space-y-6">
+            {/* Gamification & Recognition */}
+            <div className="bg-white rounded-xl p-6 border border-indigo-100 shadow-sm">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-gradient-to-br from-yellow-500 to-orange-500 p-3 rounded-lg">
+                  <Star className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">Gamification & Recognition System</h3>
+                  <p className="text-sm text-slate-600 mb-4">Drive engagement and healthy competition through recognition and achievement systems</p>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">📊 Leaderboard System</div>
+                      <p className="text-xs text-slate-600">Rank certified supervisors by their performance metrics</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🏅 Achievement Badges</div>
+                      <p className="text-xs text-slate-600">Award digital badges for milestones: "Zero Violations - 3 Months," "Top Performer," "Quick Learner"</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎖️ Certification Levels</div>
+                      <p className="text-xs text-slate-600">Bronze → Silver → Gold → Platinum based on tenure and performance</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🏆 Annual Awards</div>
+                      <p className="text-xs text-slate-600">"Supervisor of the Year" with prize money or benefits</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Financial Incentives */}
+            <div className="bg-white rounded-xl p-6 border border-indigo-100 shadow-sm">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-3 rounded-lg">
+                  <DollarSign className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">Financial Incentive Structure</h3>
+                  <p className="text-sm text-slate-600 mb-4">Monetize certification and reward high performance to drive adoption and excellence</p>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">💰 Certification Fee</div>
+                      <p className="text-xs text-slate-600">Charge 3PL companies 2,000 SAR per supervisor to ensure commitment and value perception</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">💵 Performance Bonuses</div>
+                      <p className="text-xs text-slate-600">Certified supervisors with top-tier metrics receive quarterly bonuses from Keeta</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">📉 Contract Advantages</div>
+                      <p className="text-xs text-slate-600">Certified partners get preferential pricing (e.g., 5% better rates on delivery fees)</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">⚡ Fast-track Benefits</div>
+                      <p className="text-xs text-slate-600">Priority access to new features, cities, or opportunities</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Data & Technology */}
+            <div className="bg-white rounded-xl p-6 border border-indigo-100 shadow-sm">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-3 rounded-lg">
+                  <TrendingUp className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">Data Analytics & AI Support</h3>
+                  <p className="text-sm text-slate-600 mb-4">Empower supervisors with insights and automated support systems</p>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">📊 Supervisor Dashboard</div>
+                      <p className="text-xs text-slate-600 mb-2">Real-time dashboard showing:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Rider performance metrics</li>
+                        <li>• Comparative analytics vs. peers</li>
+                        <li>• Predictive alerts for issues</li>
+                        <li>• Financial performance tracking</li>
+                      </ul>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🤖 AI-Powered Chatbot</div>
+                      <p className="text-xs text-slate-600 mb-2">24/7 intelligent support:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Trained on all certification materials</li>
+                        <li>• Handles 70-80% of routine questions</li>
+                        <li>• Escalates complex issues to humans</li>
+                        <li>• Available in Arabic and English</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Learning & Development */}
+            <div className="bg-white rounded-xl p-6 border border-indigo-100 shadow-sm">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-gradient-to-br from-purple-500 to-pink-600 p-3 rounded-lg">
+                  <BookOpen className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">Continuous Learning & Development</h3>
+                  <p className="text-sm text-slate-600 mb-4">Expand beyond initial certification with ongoing education and mentorship</p>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎓 Learning Platform</div>
+                      <p className="text-xs text-slate-600 mb-2">Ongoing education resources:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Monthly webinars on new features</li>
+                        <li>• 5-10 min micro-learning modules</li>
+                        <li>• Real case studies from top performers</li>
+                        <li>• Exam preparation tools & practice tests</li>
+                      </ul>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">👥 Mentor Program</div>
+                      <p className="text-xs text-slate-600 mb-2">Peer-to-peer knowledge sharing:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Senior supervisors mentor newcomers</li>
+                        <li>• Additional compensation for mentors</li>
+                        <li>• Knowledge-sharing ecosystem</li>
+                        <li>• Reduces support channel load</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Partnership & Quality */}
+            <div className="bg-white rounded-xl p-6 border border-indigo-100 shadow-sm">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-gradient-to-br from-red-500 to-orange-600 p-3 rounded-lg">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">Partnership Tiers & Quality Assurance</h3>
+                  <p className="text-sm text-slate-600 mb-4">Create incentive structures and maintain certification integrity</p>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎯 Tiered Partnership Model</div>
+                      <p className="text-xs text-slate-600 mb-2">Certification-based tiers:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Platinum (100% certified): Best terms</li>
+                        <li>• Gold (80%+ certified): Standard terms</li>
+                        <li>• Silver (50-79%): Basic terms</li>
+                        <li>• Bronze (&lt;50%): Higher fees</li>
+                      </ul>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🔍 Quality Assurance Program</div>
+                      <p className="text-xs text-slate-600 mb-2">Maintain standards:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Mystery shopper testing</li>
+                        <li>• Ensures knowledge application</li>
+                        <li>• Revoke cert for repeated failures</li>
+                        <li>• Creates accountability</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Community & Growth */}
+            <div className="bg-white rounded-xl p-6 border border-indigo-100 shadow-sm">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-gradient-to-br from-teal-500 to-cyan-600 p-3 rounded-lg">
+                  <Users className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">Community Building & Organic Growth</h3>
+                  <p className="text-sm text-slate-600 mb-4">Foster ecosystem and incentivize network expansion</p>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎉 Annual Summit</div>
+                      <p className="text-xs text-slate-600 mb-2">In-person gathering for certified supervisors:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Networking opportunities</li>
+                        <li>• Recognition ceremony</li>
+                        <li>• Advanced training sessions</li>
+                        <li>• Builds community & brand loyalty</li>
+                      </ul>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎁 Referral Program</div>
+                      <p className="text-xs text-slate-600 mb-2">Incentivize organic growth:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        <li>• Rewards for referring new 3PLs</li>
+                        <li>• Cash bonuses or contract advantages</li>
+                        <li>• Organic certified network expansion</li>
+                        <li>• Peer validation of program value</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 bg-indigo-100 rounded-lg p-5 border border-indigo-200">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="font-bold text-indigo-900 mb-2">Implementation Timeline</h4>
+                <p className="text-sm text-indigo-800">
+                  These enhancements should be implemented gradually after the core certification program is proven successful through Phase 1-3. 
+                  Start with high-impact, low-complexity items (exam prep tools, basic analytics) and progressively add sophisticated features 
+                  (AI chatbot, mentor program, annual summit) as the certified supervisor base grows.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -638,22 +855,6 @@ export default function KeetaCertificationDashboard() {
                 <p className="text-emerald-100">New KPIs measure supervisor performance directly, enabling data-driven partnership management.</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">Ready to Transform Partnership Management?</h2>
-          <p className="text-slate-600 text-lg mb-6 max-w-2xl mx-auto">
-            This certification program will eliminate repetitive PMM work, enable scalable growth, and establish Keeta as an industry leader in partner development. Even if the pilot doesn't meet all expectations, we'll have world-class training materials for our internal team.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105">
-              Approve Phase 1 Launch
-            </button>
-            <button className="bg-slate-200 text-slate-800 px-8 py-3 rounded-lg font-semibold hover:bg-slate-300 transition-all">
-              Schedule Deep Dive Discussion
-            </button>
           </div>
         </div>
 
