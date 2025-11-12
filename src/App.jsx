@@ -256,26 +256,38 @@ export default function KeetaCertificationDashboard() {
           </div>
 
           <div className="bg-white rounded-lg p-5">
-            <div className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+            <div className="font-bold text-slate-800 mb-4 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
               Implementation Approach: Low-Risk Validation
             </div>
-            <div className="grid md:grid-cols-4 gap-3 text-sm">
-              <div>
-                <span className="font-semibold text-slate-700">Month 1-2:</span>
-                <span className="text-slate-600"> PMMs get certified (internal validation)</span>
+            <div className="grid md:grid-cols-4 gap-4">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 border border-blue-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
+                  <span className="font-bold text-blue-900">Month 1-2</span>
+                </div>
+                <p className="text-sm text-blue-800">PMMs get certified (internal validation)</p>
               </div>
-              <div>
-                <span className="font-semibold text-slate-700">Month 3-5:</span>
-                <span className="text-slate-600"> Pilot with 5-10 supervisors in one city</span>
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-4 border border-emerald-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white text-xs font-bold">2</div>
+                  <span className="font-bold text-emerald-900">Month 3-5</span>
+                </div>
+                <p className="text-sm text-emerald-800">Pilot with 5-10 supervisors in one city</p>
               </div>
-              <div>
-                <span className="font-semibold text-slate-700">Month 6:</span>
-                <span className="text-slate-600"> Analyze results and calculate ROI</span>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 border border-orange-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
+                  <span className="font-bold text-orange-900">Month 6</span>
+                </div>
+                <p className="text-sm text-orange-800">Analyze results and calculate ROI</p>
               </div>
-              <div>
-                <span className="font-semibold text-slate-700">Month 7+:</span>
-                <span className="text-slate-600"> Scale nationwide or pivot based on data</span>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 border border-purple-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">4</div>
+                  <span className="font-bold text-purple-900">Month 7+</span>
+                </div>
+                <p className="text-sm text-purple-800">Scale nationwide or pivot based on data</p>
               </div>
             </div>
           </div>
