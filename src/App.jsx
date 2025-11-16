@@ -1,7 +1,9 @@
 import React from 'react';
-import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket, Lightbulb, BarChart3 } from 'lucide-react';
+import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket, Lightbulb, BarChart3, Languages } from 'lucide-react';
+import { useLanguage } from './context/LanguageContext';
 
 export default function KeetaCertificationDashboard() {
+  const { language, toggleLanguage, t } = useLanguage();
   const modules = [
     {
       id: 1,
@@ -204,10 +206,10 @@ export default function KeetaCertificationDashboard() {
   ];
 
   const stats = [
-    { label: "Training Modules", value: "6", icon: BookOpen, sublabel: "Comprehensive topics" },
-    { label: "Total Training", value: "17+hrs", icon: Clock, sublabel: "Self-paced online" },
-    { label: "Recertification", value: "3-6 Mo", icon: RefreshCw, sublabel: "Keep knowledge current" },
-    { label: "Support", value: "24/7", icon: HeadphonesIcon, sublabel: "Dedicated channel" }
+    { key: "modules", icon: BookOpen },
+    { key: "training", icon: Clock },
+    { key: "recertification", icon: RefreshCw },
+    { key: "support", icon: HeadphonesIcon }
   ];
 
   return (
@@ -215,14 +217,24 @@ export default function KeetaCertificationDashboard() {
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
-              <Award className="w-10 h-10" />
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-4">
+              <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                <Award className="w-10 h-10" />
+              </div>
+              <div>
+                <h1 className="text-4xl font-bold mb-2">{t.header.title}</h1>
+                <p className="text-emerald-100 text-xl">{t.header.subtitle}</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-4xl font-bold mb-2">Keeta Supervisor Certification Program</h1>
-              <p className="text-emerald-100 text-xl">Eliminating PMM Dependency Through Professional Excellence</p>
-            </div>
+            <button
+              onClick={toggleLanguage}
+              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm p-3 rounded-xl transition-all duration-200 flex items-center gap-2 group"
+              title={language === 'en' ? 'Switch to Chinese' : '切换到英语'}
+            >
+              <Languages className="w-6 h-6" />
+              <span className="text-sm font-semibold">{language === 'en' ? '中文' : 'EN'}</span>
+            </button>
           </div>
         </div>
       </div>
@@ -235,59 +247,59 @@ export default function KeetaCertificationDashboard() {
               <Lightbulb className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-2">Executive Summary: The Bottom Line</h2>
-              <p className="text-slate-600 text-sm">What you need to know in 30 seconds</p>
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">{t.executiveSummary.title}</h2>
+              <p className="text-slate-600 text-sm">{t.executiveSummary.subtitle}</p>
             </div>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6 mb-6">
             <div className="bg-white rounded-lg p-5 border-l-4 border-red-500">
-              <div className="text-red-600 font-bold text-sm mb-2">THE PROBLEM</div>
-              <p className="text-slate-700 text-sm">PMMs spend 60-80% of their time on repetitive tasks: answering identical questions, onboarding partners, and resolving the same issues. This model doesn't scale.</p>
+              <div className="text-red-600 font-bold text-sm mb-2">{t.executiveSummary.problem.title}</div>
+              <p className="text-slate-700 text-sm">{t.executiveSummary.problem.text}</p>
             </div>
             <div className="bg-white rounded-lg p-5 border-l-4 border-emerald-500">
-              <div className="text-emerald-600 font-bold text-sm mb-2">THE SOLUTION</div>
-              <p className="text-slate-700 text-sm">Create certified 3PL supervisors who possess all necessary knowledge upfront, eliminating repetitive PMM work and enabling autonomous partner operations.</p>
+              <div className="text-emerald-600 font-bold text-sm mb-2">{t.executiveSummary.solution.title}</div>
+              <p className="text-slate-700 text-sm">{t.executiveSummary.solution.text}</p>
             </div>
             <div className="bg-white rounded-lg p-5 border-l-4 border-blue-500">
-              <div className="text-blue-600 font-bold text-sm mb-2">THE OUTCOME</div>
-              <p className="text-slate-700 text-sm">2-3x partner capacity without new PMM hires. Even if pilot fails, we gain comprehensive internal training materials. Zero-risk, high-reward initiative.</p>
+              <div className="text-blue-600 font-bold text-sm mb-2">{t.executiveSummary.outcome.title}</div>
+              <p className="text-slate-700 text-sm">{t.executiveSummary.outcome.text}</p>
             </div>
           </div>
 
           <div className="bg-white rounded-lg p-5">
             <div className="font-bold text-slate-800 mb-4 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
-              Implementation Approach: Low-Risk Validation
+              {t.executiveSummary.implementationTitle}
             </div>
             <div className="grid md:grid-cols-4 gap-4">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 border border-blue-200">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
-                  <span className="font-bold text-blue-900">Month 1-2</span>
+                  <span className="font-bold text-blue-900">{t.executiveSummary.phases.month12}</span>
                 </div>
-                <p className="text-sm text-blue-800">PMMs get certified (internal validation)</p>
+                <p className="text-sm text-blue-800">{t.executiveSummary.phases.month12Text}</p>
               </div>
               <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-4 border border-emerald-200">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white text-xs font-bold">2</div>
-                  <span className="font-bold text-emerald-900">Month 3-5</span>
+                  <span className="font-bold text-emerald-900">{t.executiveSummary.phases.month35}</span>
                 </div>
-                <p className="text-sm text-emerald-800">Pilot with 5-10 supervisors in one city</p>
+                <p className="text-sm text-emerald-800">{t.executiveSummary.phases.month35Text}</p>
               </div>
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 border border-orange-200">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
-                  <span className="font-bold text-orange-900">Month 6</span>
+                  <span className="font-bold text-orange-900">{t.executiveSummary.phases.month6}</span>
                 </div>
-                <p className="text-sm text-orange-800">Analyze results and calculate ROI</p>
+                <p className="text-sm text-orange-800">{t.executiveSummary.phases.month6Text}</p>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 border border-purple-200">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">4</div>
-                  <span className="font-bold text-purple-900">Month 7+</span>
+                  <span className="font-bold text-purple-900">{t.executiveSummary.phases.month7plus}</span>
                 </div>
-                <p className="text-sm text-purple-800">Scale nationwide or pivot based on data</p>
+                <p className="text-sm text-purple-800">{t.executiveSummary.phases.month7plusText}</p>
               </div>
             </div>
           </div>
@@ -300,9 +312,9 @@ export default function KeetaCertificationDashboard() {
               <div className="flex items-center justify-between mb-2">
                 <stat.icon className="w-10 h-10 text-emerald-500 opacity-80" />
               </div>
-              <p className="text-slate-600 text-sm font-medium">{stat.label}</p>
-              <p className="text-3xl font-bold text-slate-800 mt-1">{stat.value}</p>
-              <p className="text-xs text-slate-500 mt-1">{stat.sublabel}</p>
+              <p className="text-slate-600 text-sm font-medium">{t.stats[stat.key].label}</p>
+              <p className="text-3xl font-bold text-slate-800 mt-1">{t.stats[stat.key].value}</p>
+              <p className="text-xs text-slate-500 mt-1">{t.stats[stat.key].sublabel}</p>
             </div>
           ))}
         </div>
@@ -313,41 +325,35 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-emerald-500 p-2 rounded-lg">
               <TrendingUp className="w-6 h-6" />
             </div>
-            Strategic Vision: Breaking Free from the PMM Bottleneck
+            {t.strategicVision.title}
           </h2>
           <div className="prose max-w-none">
             <p className="text-lg leading-relaxed mb-6 text-slate-200">
-              Every day, our PMMs answer the same questions: "How do I register a rider?" "Why was my invoice delayed?" "What are the shift requirements?" This <strong className="text-emerald-400">repetitive work consumes 60-80% of PMM capacity</strong>, preventing them from strategic initiatives and limiting our ability to scale partnerships. The certification program solves this by frontloading knowledge to 3PL supervisors, <strong className="text-white">eliminating the need for constant PMM hand-holding</strong>.
+              {t.strategicVision.mainText}
             </p>
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div className="bg-red-900/30 backdrop-blur-sm rounded-lg p-5 border border-red-500/30">
-                <div className="text-red-400 font-bold text-sm mb-2">❌ TODAY'S REALITY</div>
+                <div className="text-red-400 font-bold text-sm mb-2">❌ {t.strategicVision.todayReality}</div>
                 <ul className="text-sm text-slate-300 space-y-2">
-                  <li>• PMMs answer identical questions daily</li>
-                  <li>• Every new partner requires full handholding</li>
-                  <li>• Same issues repeat across all partners</li>
-                  <li>• Cannot scale without hiring more PMMs</li>
-                  <li>• 60-80% of PMM time is reactive</li>
+                  {t.strategicVision.todayPoints.map((point, i) => (
+                    <li key={i}>• {point}</li>
+                  ))}
                 </ul>
               </div>
               <div className="bg-orange-900/30 backdrop-blur-sm rounded-lg p-5 border border-orange-500/30">
-                <div className="text-orange-400 font-bold text-sm mb-2">🔄 TRANSITION (6 MONTHS)</div>
+                <div className="text-orange-400 font-bold text-sm mb-2">🔄 {t.strategicVision.transition}</div>
                 <ul className="text-sm text-slate-300 space-y-2">
-                  <li>• PMMs get certified first (validation)</li>
-                  <li>• Launch pilot with 5-10 supervisors</li>
-                  <li>• Measure time savings & quality</li>
-                  <li>• Refine based on real feedback</li>
-                  <li>• Decision point: scale or iterate</li>
+                  {t.strategicVision.transitionPoints.map((point, i) => (
+                    <li key={i}>• {point}</li>
+                  ))}
                 </ul>
               </div>
               <div className="bg-emerald-500/30 backdrop-blur-sm rounded-lg p-5 border-2 border-emerald-400">
-                <div className="text-emerald-300 font-bold text-sm mb-2">✓ FUTURE STATE</div>
+                <div className="text-emerald-300 font-bold text-sm mb-2">✓ {t.strategicVision.futureState}</div>
                 <ul className="text-sm text-white space-y-2">
-                  <li>• Supervisors onboard independently</li>
-                  <li>• 24/7 support channel handles queries</li>
-                  <li>• PMMs focus on strategic partnerships</li>
-                  <li>• 2-3x partner capacity, same team</li>
-                  <li>• Direct performance measurement</li>
+                  {t.strategicVision.futurePoints.map((point, i) => (
+                    <li key={i}>• {point}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -355,9 +361,9 @@ export default function KeetaCertificationDashboard() {
               <div className="flex items-start gap-3">
                 <Shield className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-bold text-emerald-300 mb-2">Zero-Risk Proposition</h3>
+                  <h3 className="font-bold text-emerald-300 mb-2">{t.strategicVision.zeroRiskTitle}</h3>
                   <p className="text-sm text-slate-300">
-                    This initiative has <strong className="text-white">guaranteed value regardless of outcome</strong>. If the pilot succeeds, we transform our partnership model. If it doesn't meet expectations, we still gain a comprehensive, structured training program for our PMMs—improving internal capabilities and standardizing knowledge across the team. There is no scenario where this investment is wasted.
+                    {t.strategicVision.zeroRiskText}
                   </p>
                 </div>
               </div>
@@ -371,25 +377,25 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-emerald-100 p-2 rounded-lg">
               <Award className="w-6 h-6 text-emerald-600" />
             </div>
-            What Is The Certification Program?
+            {t.certification.title}
           </h2>
-          <p className="text-slate-600 mb-6 ml-14">A comprehensive, accredited training program that equips 3PL supervisors with all knowledge needed to independently manage their operations</p>
-          
+          <p className="text-slate-600 mb-6 ml-14">{t.certification.subtitle}</p>
+
           {/* Desktop Layout */}
           <div className="hidden md:flex items-start justify-between relative">
             {/* Background connecting line */}
-            <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-300 via-teal-300 to-emerald-300" 
+            <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-300 via-teal-300 to-emerald-300"
                  style={{ zIndex: 0, width: 'calc(100% - 4rem)', marginLeft: '2rem' }}></div>
-            
+
             {certificationProcess.map((process, index) => (
               <div key={index} className="flex-1 flex flex-col items-center relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg mb-4">
                   <process.icon className="w-8 h-8" />
                 </div>
                 <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all w-full flex flex-col min-h-[140px]">
-                  <div className="text-xs font-bold text-emerald-600 mb-1 text-center">STEP {process.step}</div>
-                  <h3 className="font-bold text-slate-800 mb-2 text-center">{process.title}</h3>
-                  <p className="text-sm text-slate-600 text-center flex-grow">{process.description}</p>
+                  <div className="text-xs font-bold text-emerald-600 mb-1 text-center">{t.certification.steps[index].label} {process.step}</div>
+                  <h3 className="font-bold text-slate-800 mb-2 text-center">{t.certification.steps[index].title}</h3>
+                  <p className="text-sm text-slate-600 text-center flex-grow">{t.certification.steps[index].description}</p>
                 </div>
               </div>
             ))}
@@ -400,7 +406,7 @@ export default function KeetaCertificationDashboard() {
             {certificationProcess.map((process, index) => (
               <div key={index} className="relative">
                 {index < certificationProcess.length - 1 && (
-                  <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-emerald-300 to-teal-300" 
+                  <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-emerald-300 to-teal-300"
                        style={{ height: 'calc(100% + 1.5rem)' }}></div>
                 )}
                 <div className="flex items-start gap-4 relative z-10">
@@ -408,9 +414,9 @@ export default function KeetaCertificationDashboard() {
                     <process.icon className="w-8 h-8" />
                   </div>
                   <div className="flex-1 bg-slate-50 rounded-lg p-4 border border-slate-200">
-                    <div className="text-xs font-bold text-emerald-600 mb-1">STEP {process.step}</div>
-                    <h3 className="font-bold text-slate-800 mb-2">{process.title}</h3>
-                    <p className="text-sm text-slate-600">{process.description}</p>
+                    <div className="text-xs font-bold text-emerald-600 mb-1">{t.certification.steps[index].label} {process.step}</div>
+                    <h3 className="font-bold text-slate-800 mb-2">{t.certification.steps[index].title}</h3>
+                    <p className="text-sm text-slate-600">{t.certification.steps[index].description}</p>
                   </div>
                 </div>
               </div>
@@ -424,26 +430,26 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-emerald-100 p-2 rounded-lg">
               <BookOpen className="w-6 h-6 text-emerald-600" />
             </div>
-            Comprehensive Training Curriculum
+            {t.modules.title}
           </h2>
-          <p className="text-slate-600 mb-6 ml-14">17+ hours of structured training covering every aspect of fleet management for Keeta partners</p>
+          <p className="text-slate-600 mb-6 ml-14">{t.modules.subtitle}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modules.map((module) => (
+            {modules.map((module, index) => (
               <div key={module.id}>
                 <div className={`bg-gradient-to-br ${module.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300`}>
                   <div className="flex items-start justify-between mb-4">
                     <module.icon className="w-10 h-10" />
                     <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
-                      {module.duration}
+                      {t.modules.list[index].duration}
                     </span>
                   </div>
-                  <h3 className="font-bold text-xl mb-2">{module.title}</h3>
-                  <p className="text-white/80 text-sm mb-4">{module.topics.length} key topics</p>
-                  
+                  <h3 className="font-bold text-xl mb-2">{t.modules.list[index].title}</h3>
+                  <p className="text-white/80 text-sm mb-4">{t.modules.list[index].topics.length} key topics</p>
+
                   <div className="pt-4 border-t border-white/20">
-                    <p className="text-xs font-semibold mb-2 text-white/90">Topics Covered:</p>
+                    <p className="text-xs font-semibold mb-2 text-white/90">{t.modules.topicsCovered}</p>
                     <ul className="space-y-1">
-                      {module.topics.map((topic, idx) => (
+                      {t.modules.list[index].topics.map((topic, idx) => (
                         <li key={idx} className="text-sm text-white/90 flex items-start gap-2">
                           <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                           <span>{topic}</span>
@@ -463,9 +469,9 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-emerald-100 p-2 rounded-lg">
               <Rocket className="w-6 h-6 text-emerald-600" />
             </div>
-            4-Phase Implementation Roadmap
+            {t.implementation.title}
           </h2>
-          <p className="text-slate-600 mb-6 ml-14">Measured, data-driven rollout with clear validation checkpoints</p>
+          <p className="text-slate-600 mb-6 ml-14">{t.implementation.subtitle}</p>
           <div className="space-y-6">
             {implementationPhases.map((phase, index) => (
               <div key={index} className="relative">
@@ -482,17 +488,17 @@ export default function KeetaCertificationDashboard() {
                     <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all">
                       <div className="flex items-start justify-between mb-3">
                         <div>
-                          <div className="text-xs font-bold text-emerald-600 mb-1">{phase.phase}</div>
-                          <h3 className="text-xl font-bold text-slate-800">{phase.title}</h3>
+                          <div className="text-xs font-bold text-emerald-600 mb-1">{t.implementation.phases[index].phase}</div>
+                          <h3 className="text-xl font-bold text-slate-800">{t.implementation.phases[index].title}</h3>
                         </div>
                         <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">
-                          {phase.duration}
+                          {t.implementation.phases[index].duration}
                         </span>
                       </div>
-                      <p className="text-slate-600 mb-4">{phase.description}</p>
+                      <p className="text-slate-600 mb-4">{t.implementation.phases[index].description}</p>
                       <div className="space-y-2">
-                        <div className="text-sm font-semibold text-slate-700">Key Objectives:</div>
-                        {phase.objectives.map((obj, idx) => (
+                        <div className="text-sm font-semibold text-slate-700">{t.implementation.keyObjectives}</div>
+                        {t.implementation.phases[index].objectives.map((obj, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-sm text-slate-600">
                             <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                             <span>{obj}</span>
@@ -513,9 +519,9 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-emerald-100 p-2 rounded-lg">
               <AlertCircle className="w-6 h-6 text-emerald-600" />
             </div>
-            Anticipated Challenges & Mitigation Strategies
+            {t.challenges.title}
           </h2>
-          <p className="text-slate-600 mb-6 ml-14">We've identified key risks and developed concrete solutions for each</p>
+          <p className="text-slate-600 mb-6 ml-14">{t.challenges.subtitle}</p>
           <div className="space-y-6">
             {challenges.map((item, index) => (
               <div key={index} className={`bg-gradient-to-br ${item.color} rounded-xl p-6 text-white shadow-lg`}>
@@ -524,17 +530,17 @@ export default function KeetaCertificationDashboard() {
                     <item.icon className="w-8 h-8" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">Challenge: {item.challenge}</h3>
-                    <p className="text-white/90 text-sm">{item.description}</p>
+                    <h3 className="text-xl font-bold mb-2">{language === 'en' ? 'Challenge: ' : '挑战：'}{t.challenges.list[index].challenge}</h3>
+                    <p className="text-white/90 text-sm">{t.challenges.list[index].description}</p>
                   </div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                   <div className="text-sm font-semibold mb-3 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5" />
-                    Mitigation Strategies:
+                    {t.challenges.mitigationStrategies}
                   </div>
                   <ul className="space-y-2">
-                    {item.solutions.map((solution, idx) => (
+                    {t.challenges.list[index].solutions.map((solution, idx) => (
                       <li key={idx} className="text-sm text-white/90 flex items-start gap-2">
                         <span className="text-white font-bold flex-shrink-0">•</span>
                         <span>{solution}</span>
@@ -555,36 +561,36 @@ export default function KeetaCertificationDashboard() {
                 <RefreshCw className="w-8 h-8" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2">Recertification System</h2>
-                <p className="text-blue-100">Keeping knowledge current as Keeta evolves</p>
+                <h2 className="text-2xl font-bold mb-2">{t.recertification.title}</h2>
+                <p className="text-blue-100">{t.recertification.subtitle}</p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                 <h3 className="font-bold mb-2 flex items-center gap-2">
                   <Clock className="w-5 h-5" />
-                  Adaptive Frequency: Every 3-6 Months
+                  {t.recertification.adaptiveFrequency}
                 </h3>
                 <p className="text-sm text-blue-100">
-                  Recertification interval depends on the extent of changes. Minor updates require shorter 3-month cycles, while major overhauls extend to 6 months. This keeps supervisors current without overwhelming them.
+                  {t.recertification.adaptiveText}
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                 <h3 className="font-bold mb-2 flex items-center gap-2">
                   <FileText className="w-5 h-5" />
-                  Focused Assessment
+                  {t.recertification.focusedAssessment}
                 </h3>
                 <p className="text-sm text-blue-100">
-                  Recertification exams focus only on new content and major updates, not the entire curriculum. This respects supervisors' time while ensuring they stay current with critical changes.
+                  {t.recertification.focusedText}
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                 <h3 className="font-bold mb-2 flex items-center gap-2">
                   <AlertCircle className="w-5 h-5" />
-                  Enforcement
+                  {t.recertification.enforcement}
                 </h3>
                 <p className="text-sm text-blue-100">
-                  Supervisors who fail to recertify within the 30-day grace period will have their certification suspended until they pass the updated exam. No exceptions to maintain program integrity.
+                  {t.recertification.enforcementText}
                 </p>
               </div>
             </div>
@@ -596,36 +602,36 @@ export default function KeetaCertificationDashboard() {
                 <HeadphonesIcon className="w-8 h-8" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2">24/7 Support Channel</h2>
-                <p className="text-purple-100">Exclusive support for certified supervisors</p>
+                <h2 className="text-2xl font-bold mb-2">{t.support.title}</h2>
+                <p className="text-purple-100">{t.support.subtitle}</p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                 <h3 className="font-bold mb-2 flex items-center gap-2">
                   <MessageSquare className="w-5 h-5" />
-                  Dedicated Chat Channel
+                  {t.support.dedicatedChat}
                 </h3>
                 <p className="text-sm text-purple-100">
-                  Certified supervisors gain access to a dedicated 24/7 support channel for questions, issues, and guidance—bypassing traditional PMM channels entirely.
+                  {t.support.dedicatedText}
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                 <h3 className="font-bold mb-2 flex items-center gap-2">
                   <Users className="w-5 h-5" />
-                  Community Knowledge Base
+                  {t.support.community}
                 </h3>
                 <p className="text-sm text-purple-100">
-                  Supervisors can search past discussions, share best practices, and learn from each other's experiences—building a self-sustaining community that reduces support load over time.
+                  {t.support.communityText}
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20">
                 <h3 className="font-bold mb-2 flex items-center gap-2">
                   <Zap className="w-5 h-5" />
-                  Rapid Response SLA
+                  {t.support.rapidResponse}
                 </h3>
                 <p className="text-sm text-purple-100">
-                  Dedicated support team trained to handle complex queries quickly, with average response time under 2 hours for urgent issues. Critical problems escalated within 30 minutes.
+                  {t.support.rapidText}
                 </p>
               </div>
             </div>
@@ -638,18 +644,18 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-emerald-100 p-2 rounded-lg">
               <Star className="w-6 h-6 text-emerald-600" />
             </div>
-            Expected Impact & Business Benefits
+            {t.benefits.title}
           </h2>
-          <p className="text-slate-600 mb-6 ml-14">Quantifiable improvements across operations, efficiency, and scalability</p>
+          <p className="text-slate-600 mb-6 ml-14">{t.benefits.subtitle}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
               <div key={index} className="bg-slate-50 rounded-lg p-6 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all">
                 <benefit.icon className="w-10 h-10 text-emerald-600 mb-3" />
-                <h3 className="font-bold text-slate-800 mb-2">{benefit.title}</h3>
-                <p className="text-sm text-slate-600 mb-3">{benefit.description}</p>
+                <h3 className="font-bold text-slate-800 mb-2">{t.benefits.list[index].title}</h3>
+                <p className="text-sm text-slate-600 mb-3">{t.benefits.list[index].description}</p>
                 <div className="bg-emerald-50 rounded px-3 py-2 border border-emerald-200">
-                  <div className="text-xs font-semibold text-emerald-700 mb-1">Target Metric:</div>
-                  <div className="text-xs text-emerald-800">{benefit.metric}</div>
+                  <div className="text-xs font-semibold text-emerald-700 mb-1">{t.benefits.targetMetric}</div>
+                  <div className="text-xs text-emerald-800">{t.benefits.list[index].metric}</div>
                 </div>
               </div>
             ))}
@@ -662,9 +668,9 @@ export default function KeetaCertificationDashboard() {
             <div className="bg-indigo-600 p-2 rounded-lg">
               <Rocket className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-800">Future Enhancement Roadmap</h2>
+            <h2 className="text-2xl font-bold text-slate-800">{t.futureEnhancements.title}</h2>
           </div>
-          <p className="text-slate-600 mb-6 ml-14">Strategic initiatives to maximize program impact once core certification is validated (Phase 4+)</p>
+          <p className="text-slate-600 mb-6 ml-14">{t.futureEnhancements.subtitle}</p>
           
           <div className="space-y-6">
             {/* Gamification & Recognition */}
@@ -674,24 +680,24 @@ export default function KeetaCertificationDashboard() {
                   <Star className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">Gamification & Recognition System</h3>
-                  <p className="text-sm text-slate-600 mb-4">Drive engagement and healthy competition through recognition and achievement systems</p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{t.futureEnhancements.gamification.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{t.futureEnhancements.gamification.subtitle}</p>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">📊 Leaderboard System</div>
-                      <p className="text-xs text-slate-600">Rank certified supervisors by their performance metrics</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">📊 {t.futureEnhancements.gamification.leaderboard}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.gamification.leaderboardText}</p>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🏅 Achievement Badges</div>
-                      <p className="text-xs text-slate-600">Award digital badges for milestones: "Zero Violations - 3 Months," "Top Performer," "Quick Learner"</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🏅 {t.futureEnhancements.gamification.badges}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.gamification.badgesText}</p>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎖️ Certification Levels</div>
-                      <p className="text-xs text-slate-600">Bronze → Silver → Gold → Platinum based on tenure and performance</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎖️ {t.futureEnhancements.gamification.levels}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.gamification.levelsText}</p>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🏆 Annual Awards</div>
-                      <p className="text-xs text-slate-600">"Supervisor of the Year" with prize money or benefits</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🏆 {t.futureEnhancements.gamification.awards}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.gamification.awardsText}</p>
                     </div>
                   </div>
                 </div>
@@ -705,24 +711,24 @@ export default function KeetaCertificationDashboard() {
                   <DollarSign className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">Financial Incentive Structure</h3>
-                  <p className="text-sm text-slate-600 mb-4">Monetize certification and reward high performance to drive adoption and excellence</p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{t.futureEnhancements.financial.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{t.futureEnhancements.financial.subtitle}</p>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">💰 Certification Fee</div>
-                      <p className="text-xs text-slate-600">Charge 3PL companies 2,000 SAR per supervisor to ensure commitment and value perception</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">💰 {t.futureEnhancements.financial.fee}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.financial.feeText}</p>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">💵 Performance Bonuses</div>
-                      <p className="text-xs text-slate-600">Certified supervisors with top-tier metrics receive quarterly bonuses from Keeta</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">💵 {t.futureEnhancements.financial.bonuses}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.financial.bonusesText}</p>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">📉 Contract Advantages</div>
-                      <p className="text-xs text-slate-600">Certified partners get preferential pricing (e.g., 5% better rates on delivery fees)</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">📉 {t.futureEnhancements.financial.contract}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.financial.contractText}</p>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">⚡ Fast-track Benefits</div>
-                      <p className="text-xs text-slate-600">Priority access to new features, cities, or opportunities</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">⚡ {t.futureEnhancements.financial.fastTrack}</div>
+                      <p className="text-xs text-slate-600">{t.futureEnhancements.financial.fastTrackText}</p>
                     </div>
                   </div>
                 </div>
@@ -736,27 +742,25 @@ export default function KeetaCertificationDashboard() {
                   <TrendingUp className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">Data Analytics & AI Support</h3>
-                  <p className="text-sm text-slate-600 mb-4">Empower supervisors with insights and automated support systems</p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{t.futureEnhancements.analytics.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{t.futureEnhancements.analytics.subtitle}</p>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">📊 Supervisor Dashboard</div>
-                      <p className="text-xs text-slate-600 mb-2">Real-time dashboard showing:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">📊 {t.futureEnhancements.analytics.dashboard}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.analytics.dashboardText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Rider performance metrics</li>
-                        <li>• Comparative analytics vs. peers</li>
-                        <li>• Predictive alerts for issues</li>
-                        <li>• Financial performance tracking</li>
+                        {t.futureEnhancements.analytics.dashboardPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🤖 AI-Powered Chatbot</div>
-                      <p className="text-xs text-slate-600 mb-2">24/7 intelligent support:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🤖 {t.futureEnhancements.analytics.ai}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.analytics.aiText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Trained on all certification materials</li>
-                        <li>• Handles 70-80% of routine questions</li>
-                        <li>• Escalates complex issues to humans</li>
-                        <li>• Available in Arabic and English</li>
+                        {t.futureEnhancements.analytics.aiPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -771,27 +775,25 @@ export default function KeetaCertificationDashboard() {
                   <BookOpen className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">Continuous Learning & Development</h3>
-                  <p className="text-sm text-slate-600 mb-4">Expand beyond initial certification with ongoing education and mentorship</p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{t.futureEnhancements.learning.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{t.futureEnhancements.learning.subtitle}</p>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎓 Learning Platform</div>
-                      <p className="text-xs text-slate-600 mb-2">Ongoing education resources:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎓 {t.futureEnhancements.learning.platform}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.learning.platformText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Monthly webinars on new features</li>
-                        <li>• 5-10 min micro-learning modules</li>
-                        <li>• Real case studies from top performers</li>
-                        <li>• Exam preparation tools & practice tests</li>
+                        {t.futureEnhancements.learning.platformPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">👥 Mentor Program</div>
-                      <p className="text-xs text-slate-600 mb-2">Peer-to-peer knowledge sharing:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">👥 {t.futureEnhancements.learning.mentor}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.learning.mentorText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Senior supervisors mentor newcomers</li>
-                        <li>• Additional compensation for mentors</li>
-                        <li>• Knowledge-sharing ecosystem</li>
-                        <li>• Reduces support channel load</li>
+                        {t.futureEnhancements.learning.mentorPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -806,27 +808,25 @@ export default function KeetaCertificationDashboard() {
                   <Shield className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">Partnership Tiers & Quality Assurance</h3>
-                  <p className="text-sm text-slate-600 mb-4">Create incentive structures and maintain certification integrity</p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{t.futureEnhancements.partnership.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{t.futureEnhancements.partnership.subtitle}</p>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎯 Tiered Partnership Model</div>
-                      <p className="text-xs text-slate-600 mb-2">Certification-based tiers:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎯 {t.futureEnhancements.partnership.tiered}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.partnership.tieredText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Platinum (100% certified): Best terms</li>
-                        <li>• Gold (80%+ certified): Standard terms</li>
-                        <li>• Silver (50-79%): Basic terms</li>
-                        <li>• Bronze (&lt;50%): Higher fees</li>
+                        {t.futureEnhancements.partnership.tieredPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🔍 Quality Assurance Program</div>
-                      <p className="text-xs text-slate-600 mb-2">Maintain standards:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🔍 {t.futureEnhancements.partnership.quality}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.partnership.qualityText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Mystery shopper testing</li>
-                        <li>• Ensures knowledge application</li>
-                        <li>• Revoke cert for repeated failures</li>
-                        <li>• Creates accountability</li>
+                        {t.futureEnhancements.partnership.qualityPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -841,27 +841,25 @@ export default function KeetaCertificationDashboard() {
                   <Users className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">Community Building & Organic Growth</h3>
-                  <p className="text-sm text-slate-600 mb-4">Foster ecosystem and incentivize network expansion</p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{t.futureEnhancements.community.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{t.futureEnhancements.community.subtitle}</p>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎉 Annual Summit</div>
-                      <p className="text-xs text-slate-600 mb-2">In-person gathering for certified supervisors:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎉 {t.futureEnhancements.community.summit}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.community.summitText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Networking opportunities</li>
-                        <li>• Recognition ceremony</li>
-                        <li>• Advanced training sessions</li>
-                        <li>• Builds community & brand loyalty</li>
+                        {t.futureEnhancements.community.summitPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎁 Referral Program</div>
-                      <p className="text-xs text-slate-600 mb-2">Incentivize organic growth:</p>
+                      <div className="font-semibold text-slate-800 mb-2 text-sm">🎁 {t.futureEnhancements.community.referral}</div>
+                      <p className="text-xs text-slate-600 mb-2">{t.futureEnhancements.community.referralText}</p>
                       <ul className="text-xs text-slate-600 space-y-1">
-                        <li>• Rewards for referring new 3PLs</li>
-                        <li>• Cash bonuses or contract advantages</li>
-                        <li>• Organic certified network expansion</li>
-                        <li>• Peer validation of program value</li>
+                        {t.futureEnhancements.community.referralPoints.map((point, i) => (
+                          <li key={i}>• {point}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -874,11 +872,9 @@ export default function KeetaCertificationDashboard() {
             <div className="flex items-start gap-3">
               <AlertCircle className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-bold text-indigo-900 mb-2">Implementation Sequencing</h4>
+                <h4 className="font-bold text-indigo-900 mb-2">{t.futureEnhancements.implementationSequencing}</h4>
                 <p className="text-sm text-indigo-800">
-                  These enhancements should be implemented gradually after the core certification program proves successful through Phases 1-3. 
-                  Prioritize high-impact, low-complexity items first (exam prep tools, basic analytics), then progressively add sophisticated features 
-                  (AI chatbot, mentor program, annual summit) as the certified supervisor base grows to 50+ supervisors.
+                  {t.futureEnhancements.implementationText}
                 </p>
               </div>
             </div>
@@ -889,7 +885,7 @@ export default function KeetaCertificationDashboard() {
         <div className="mt-8 text-center">
           <div className="inline-block bg-white rounded-lg shadow px-6 py-3">
             <p className="text-sm text-slate-600">
-              <strong className="text-slate-800">Keeta Supervisor Certification Program</strong> • Reducing PMM Dependency & Building Scalable Partnerships
+              <strong className="text-slate-800">{t.footer.title}</strong> • {t.footer.subtitle}
             </p>
           </div>
         </div>
