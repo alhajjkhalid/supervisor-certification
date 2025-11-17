@@ -7,17 +7,51 @@ export const en = {
   executiveSummary: {
     title: "Executive Summary: The Bottom Line",
     subtitle: "What you need to know in 30 seconds",
+    background: {
+      title: "BACKGROUND",
+      subtitle: "How this idea was born",
+      points: [
+        "I observed PMMs answering the same questions repeatedly—day after day, partner after partner",
+        "Every new 3PL partnership required full handholding, creating an unsustainable support bottleneck",
+        "Our PMM team was drowning in reactive work: 60-80% of their time spent on repetitive tasks",
+        "I realized we were treating knowledge as a scarce resource when it should be freely available upfront",
+        "The solution became clear: What if supervisors came pre-equipped with everything they need to know?"
+      ]
+    },
     problem: {
       title: "THE PROBLEM",
-      text: "PMMs spend 60-80% of their time on repetitive tasks: answering identical questions, onboarding partners, and resolving the same issues. This model doesn't scale."
+      subtitle: "The PMM bottleneck crisis",
+      points: [
+        "PMMs spend 60-80% of their time on repetitive, low-value tasks that never end",
+        "Every partner asks identical questions: \"How do I register a rider?\" \"Why was my invoice delayed?\"",
+        "We can't scale partnerships without hiring more PMMs—an expensive, unsustainable approach",
+        "Partners remain dependent on PMMs instead of operating autonomously",
+        "Strategic PMM work is sacrificed because they're constantly firefighting basic issues"
+      ]
     },
     solution: {
-      title: "THE SOLUTION",
-      text: "Create certified 3PL supervisors who possess all necessary knowledge upfront, eliminating repetitive PMM work and enabling autonomous partner operations."
+      title: "PLAN & SOLUTION",
+      subtitle: "How we'll solve this systematically",
+      points: [
+        "Create a comprehensive 17-hour certification program covering all aspects of fleet management",
+        "Train 3PL supervisors upfront so they possess complete operational knowledge from day one",
+        "Launch with PMMs first (Month 1-2) to validate content and refine materials internally",
+        "Run a controlled pilot with 5-10 supervisors in one city (Month 3-5) to prove the concept",
+        "Provide 24/7 dedicated support channel for certified supervisors, bypassing PMM bottleneck entirely",
+        "Scale nationwide based on pilot results or iterate based on feedback"
+      ]
     },
-    outcome: {
-      title: "THE OUTCOME",
-      text: "2-3x partner capacity without new PMM hires. Even if pilot fails, we gain comprehensive internal training materials. Zero-risk, high-reward initiative."
+    result: {
+      title: "EXPECTED RESULT",
+      subtitle: "The transformation we'll achieve",
+      points: [
+        "Eliminate 60-80% of repetitive PMM work, freeing them for strategic initiatives",
+        "Achieve 2-3x partner capacity without hiring additional PMMs—massive cost savings",
+        "Partners operate autonomously with confidence, reducing errors by 40-50%",
+        "Direct measurement of supervisor performance through new KPIs, not PMM filters",
+        "Zero-risk proposition: Even if pilot fails, we gain comprehensive internal PMM training materials",
+        "Create career development path for supervisors, increasing partner loyalty and retention"
+      ]
     },
     implementationTitle: "Implementation Approach: Low-Risk Validation",
     phases: {

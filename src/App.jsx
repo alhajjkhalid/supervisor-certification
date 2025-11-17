@@ -252,18 +252,54 @@ export default function KeetaCertificationDashboard() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="bg-white rounded-lg p-5 border-l-4 border-indigo-500">
+              <div className="text-indigo-600 font-bold text-sm mb-1">{t.executiveSummary.background.title}</div>
+              <div className="text-indigo-500 text-xs mb-3 italic">{t.executiveSummary.background.subtitle}</div>
+              <ul className="space-y-2">
+                {t.executiveSummary.background.points.map((point, i) => (
+                  <li key={i} className="text-slate-700 text-sm flex items-start gap-2">
+                    <span className="text-indigo-500 font-bold flex-shrink-0 mt-0.5">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="bg-white rounded-lg p-5 border-l-4 border-red-500">
-              <div className="text-red-600 font-bold text-sm mb-2">{t.executiveSummary.problem.title}</div>
-              <p className="text-slate-700 text-sm">{t.executiveSummary.problem.text}</p>
+              <div className="text-red-600 font-bold text-sm mb-1">{t.executiveSummary.problem.title}</div>
+              <div className="text-red-500 text-xs mb-3 italic">{t.executiveSummary.problem.subtitle}</div>
+              <ul className="space-y-2">
+                {t.executiveSummary.problem.points.map((point, i) => (
+                  <li key={i} className="text-slate-700 text-sm flex items-start gap-2">
+                    <span className="text-red-500 font-bold flex-shrink-0 mt-0.5">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="bg-white rounded-lg p-5 border-l-4 border-emerald-500">
-              <div className="text-emerald-600 font-bold text-sm mb-2">{t.executiveSummary.solution.title}</div>
-              <p className="text-slate-700 text-sm">{t.executiveSummary.solution.text}</p>
+              <div className="text-emerald-600 font-bold text-sm mb-1">{t.executiveSummary.solution.title}</div>
+              <div className="text-emerald-500 text-xs mb-3 italic">{t.executiveSummary.solution.subtitle}</div>
+              <ul className="space-y-2">
+                {t.executiveSummary.solution.points.map((point, i) => (
+                  <li key={i} className="text-slate-700 text-sm flex items-start gap-2">
+                    <span className="text-emerald-500 font-bold flex-shrink-0 mt-0.5">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="bg-white rounded-lg p-5 border-l-4 border-blue-500">
-              <div className="text-blue-600 font-bold text-sm mb-2">{t.executiveSummary.outcome.title}</div>
-              <p className="text-slate-700 text-sm">{t.executiveSummary.outcome.text}</p>
+              <div className="text-blue-600 font-bold text-sm mb-1">{t.executiveSummary.result.title}</div>
+              <div className="text-blue-500 text-xs mb-3 italic">{t.executiveSummary.result.subtitle}</div>
+              <ul className="space-y-2">
+                {t.executiveSummary.result.points.map((point, i) => (
+                  <li key={i} className="text-slate-700 text-sm flex items-start gap-2">
+                    <span className="text-blue-500 font-bold flex-shrink-0 mt-0.5">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
