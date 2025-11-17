@@ -889,6 +889,19 @@ export default function KeetaCertificationDashboard() {
             </p>
           </div>
         </div>
+
+        {/* Credits */}
+        <div className="mt-6 text-center pb-8">
+          <div className="inline-block bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg shadow-sm px-6 py-4 border border-emerald-200">
+            <p className="text-xs text-slate-500 mb-1">Developed by</p>
+            <p className="text-sm font-semibold text-slate-800">
+              Khalid Ahmad Alhajj
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              Daxiang ID: <span className="font-mono text-emerald-700">khalidahmad02</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
