@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket, Lightbulb, BarChart3, Languages } from 'lucide-react';
+import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket, Lightbulb, BarChart3, Languages, Video, UserCheck } from 'lucide-react';
 import { useLanguage } from './context/LanguageContext';
 
 export default function KeetaCertificationDashboard() {
@@ -336,6 +336,108 @@ export default function KeetaCertificationDashboard() {
                   <span className="font-bold text-purple-900">{t.executiveSummary.phases.month7plus}</span>
                 </div>
                 <p className="text-sm text-purple-800">{t.executiveSummary.phases.month7plusText}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Why Me Section */}
+        <div className="bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 border-2 border-purple-300 rounded-xl shadow-xl p-8 mb-8">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="bg-gradient-to-br from-purple-600 to-indigo-600 p-3 rounded-xl shadow-lg">
+              <UserCheck className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">{t.whyMe.title}</h2>
+              <p className="text-slate-600 text-sm">{t.whyMe.subtitle}</p>
+            </div>
+          </div>
+
+          {/* Project Scope & Complexity */}
+          <div className="bg-gradient-to-r from-rose-100 to-orange-100 rounded-xl p-6 mb-6 border-2 border-rose-300">
+            <div className="flex items-start gap-3 mb-4">
+              <div className="bg-rose-600 p-2 rounded-lg">
+                <Rocket className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-1">{t.whyMe.scopeTitle}</h3>
+                <p className="text-sm text-slate-600 italic">{t.whyMe.scopeSubtitle}</p>
+              </div>
+            </div>
+            <ul className="space-y-2">
+              {t.whyMe.scopePoints.map((point, i) => (
+                <li key={i} className="text-slate-700 text-sm flex items-start gap-2">
+                  <span className="text-rose-600 font-bold flex-shrink-0 mt-0.5">•</span>
+                  <span className="font-medium">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Qualifications Grid */}
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-gradient-to-br from-emerald-600 to-teal-600 p-2 rounded-lg">
+                <Star className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-800">{t.whyMe.qualificationsTitle}</h3>
+                <p className="text-sm text-slate-600 italic">{t.whyMe.qualificationsSubtitle}</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {t.whyMe.qualifications.map((qual, index) => {
+                const IconComponent = qual.icon === 'Truck' ? Truck :
+                                     qual.icon === 'Video' ? Video :
+                                     qual.icon === 'BookOpen' ? BookOpen :
+                                     qual.icon === 'BarChart3' ? BarChart3 :
+                                     qual.icon === 'Users' ? Users :
+                                     qual.icon === 'MapPin' ? MapPin : Users;
+
+                const colors = [
+                  'from-blue-500 to-cyan-600',
+                  'from-purple-500 to-pink-600',
+                  'from-emerald-500 to-teal-600',
+                  'from-orange-500 to-red-600',
+                  'from-indigo-500 to-purple-600',
+                  'from-green-500 to-emerald-600'
+                ];
+
+                return (
+                  <div key={index} className="bg-white rounded-lg p-5 border border-slate-200 hover:border-purple-300 hover:shadow-md transition-all">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`bg-gradient-to-br ${colors[index]} p-2 rounded-lg`}>
+                        <IconComponent className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="font-bold text-slate-800">{qual.category}</h4>
+                    </div>
+                    <ul className="space-y-2">
+                      {qual.points.map((point, idx) => (
+                        <li key={idx} className="text-sm text-slate-700 flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Dedication Requirement */}
+          <div className="bg-gradient-to-r from-amber-100 to-yellow-100 rounded-xl p-6 border-2 border-amber-400">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="bg-amber-600 p-2 rounded-lg">
+                <AlertCircle className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-1">{t.whyMe.dedicationTitle}</h3>
+                <p className="text-sm text-slate-600 italic mb-3">{t.whyMe.dedicationSubtitle}</p>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  {t.whyMe.dedicationText}
+                </p>
               </div>
             </div>
           </div>

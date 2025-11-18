@@ -66,6 +66,81 @@ export const en = {
     }
   },
 
+  whyMe: {
+    title: "Why I'm The Right Person to Lead This Project",
+    subtitle: "This is a major undertaking requiring dedicated focus and a unique combination of skills",
+    scopeTitle: "PROJECT SCOPE & COMPLEXITY",
+    scopeSubtitle: "This is not just a simple training document",
+    scopePoints: [
+      "Estimated timeline: 3+ months of full-time dedicated work",
+      "Requires professional videography and production for high-quality training content",
+      "Deep dive into every operational detail to gather comprehensive data and insights",
+      "Development of interactive learning materials, assessments, and certification systems",
+      "This is a transformational project that will reshape our partnership model for years to come"
+    ],
+    qualificationsTitle: "MY UNIQUE QUALIFICATIONS",
+    qualificationsSubtitle: "A rare combination of experience and skills",
+    qualifications: [
+      {
+        category: "Logistics Expertise",
+        icon: "Truck",
+        points: [
+          "Started as a PMM—the best foundation in logistics, providing exposure to every aspect of operations",
+          "Frontline experience means I understand exactly how things work on the ground, not just in theory",
+          "I've lived the problems this program solves—I know the pain points intimately"
+        ]
+      },
+      {
+        category: "Content Creation & Media",
+        icon: "Video",
+        points: [
+          "Professional videographer with experience creating engaging visual content",
+          "Skilled in producing high-quality training videos that capture attention and facilitate learning",
+          "Understanding of visual storytelling to make complex concepts accessible"
+        ]
+      },
+      {
+        category: "Training Development",
+        icon: "BookOpen",
+        points: [
+          "Proven track record building comprehensive training materials as Operations Manager at a coding academy",
+          "Experience designing curricula that balance theoretical knowledge with practical application",
+          "Know how to structure learning paths that ensure knowledge retention and skill mastery"
+        ]
+      },
+      {
+        category: "Technical & Analytical Skills",
+        icon: "BarChart3",
+        points: [
+          "Data analyst capable of identifying patterns, measuring impact, and optimizing based on metrics",
+          "Programming skills enable me to build interactive tools and automated systems if needed",
+          "Technical background ensures I can work efficiently with learning management platforms"
+        ]
+      },
+      {
+        category: "Teaching & Communication",
+        icon: "Users",
+        points: [
+          "Natural ability to teach and deliver information in clear, engaging ways",
+          "Experience adapting communication style for different audiences and learning preferences",
+          "Skilled at breaking down complex topics into digestible, actionable content"
+        ]
+      },
+      {
+        category: "Cultural Fit",
+        icon: "MapPin",
+        points: [
+          "Born and raised in Saudi Arabia—deep understanding of local market dynamics and cultural nuances",
+          "Fluent in the cultural context that shapes how supervisors learn, communicate, and operate",
+          "This local insight is crucial for creating training that resonates and drives real behavior change"
+        ]
+      }
+    ],
+    dedicationTitle: "THE DEDICATION REQUIREMENT",
+    dedicationSubtitle: "Why this needs full-time focus",
+    dedicationText: "A project of this magnitude and strategic importance cannot be treated as a side responsibility. Creating a world-class certification program requires complete immersion—conducting deep research, producing professional video content, developing comprehensive curricula, and meticulously testing every component. Attempting to execute this initiative while simultaneously handling PMM responsibilities would compromise both roles and result in a subpar outcome. This project demands undivided attention to deliver the transformational impact that Keeta deserves."
+  },
+
   stats: {
     modules: {
       label: "Training Modules",
