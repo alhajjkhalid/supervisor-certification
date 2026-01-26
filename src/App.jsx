@@ -1,5 +1,6 @@
 import React from 'react';
-import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket, Lightbulb, BarChart3, Languages, Video, UserCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Award, BookOpen, Users, TrendingUp, CheckCircle, Clock, MapPin, FileText, Truck, DollarSign, AlertCircle, MessageSquare, Star, RefreshCw, Target, Zap, Shield, HeadphonesIcon, Rocket, Lightbulb, BarChart3, Languages, Video, UserCheck, ArrowRight } from 'lucide-react';
 import { useLanguage } from './context/LanguageContext';
 
 export default function KeetaCertificationDashboard() {
@@ -338,6 +339,50 @@ export default function KeetaCertificationDashboard() {
                 <p className="text-sm text-purple-800">{t.executiveSummary.phases.month7plusText}</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Pilot Phase CTA */}
+        <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-xl shadow-2xl p-8 mb-8 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+              <Zap className="w-8 h-8" />
+            </div>
+            <h2 className="text-3xl font-bold mb-3">🚀 2-Month Pilot Phase: Proof of Concept</h2>
+            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
+              Before committing to the full 3+ month program, management can evaluate quality and feasibility through
+              a streamlined 2-month pilot covering 11 critical training topics in English & Arabic.
+            </p>
+            <div className="flex items-center justify-center gap-6 mb-6">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-3">
+                <div className="text-2xl font-bold">11</div>
+                <div className="text-xs text-blue-100">Topics</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-3">
+                <div className="text-2xl font-bold">22</div>
+                <div className="text-xs text-blue-100">Videos</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-3">
+                <div className="text-2xl font-bold">2</div>
+                <div className="text-xs text-blue-100">Languages</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-3">
+                <div className="text-2xl font-bold">2</div>
+                <div className="text-xs text-blue-100">Months</div>
+              </div>
+            </div>
+            <Link
+              to="/pilot-phase"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105 group"
+            >
+              <span>View Complete Pilot Phase Plan</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <p className="text-sm text-blue-100 mt-4 italic">
+              ✓ Minimal risk • ✓ Quality validation • ✓ Feasibility proof • ✓ Management evaluation
+            </p>
           </div>
         </div>
 
